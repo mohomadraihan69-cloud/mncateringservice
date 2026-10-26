@@ -1,517 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061b49">
 <title>MN CATERING SERVICE</title>
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --dark: #020817;
-    --dark-blue: #061b45;
-    --blue: #087bff;
-    --neon: #00eaff;
-    --light-neon: #8af7ff;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    color: var(--neon);
-    background: var(--dark);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* NEON BACKGROUND */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(ellipse at 20% 20%,
-        #063d85 0%, transparent 45%),
-        radial-gradient(ellipse at 80% 80%,
-        #071d55 0%, transparent 45%),
-        linear-gradient(135deg,
-        #020817, #061b45, #020817);
-    z-index: -2;
-}
-
-/* ANIMATED BUBBLES */
-
-.bubbles span {
-    position: fixed;
-    bottom: -100px;
-    border: 1px solid var(--neon);
-    border-radius: 50%;
-    background: rgba(0, 234, 255, 0.08);
-    box-shadow:
-        0 0 10px var(--neon),
-        inset 0 0 10px rgba(0,234,255,0.2);
-    animation: float 12s linear infinite;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.bubbles span:nth-child(1) {
-    left: 5%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 0s;
-}
-
-.bubbles span:nth-child(2) {
-    left: 20%;
-    width: 45px;
-    height: 45px;
-    animation-delay: 3s;
-}
-
-.bubbles span:nth-child(3) {
-    left: 40%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 1s;
-}
-
-.bubbles span:nth-child(4) {
-    left: 60%;
-    width: 55px;
-    height: 55px;
-    animation-delay: 5s;
-}
-
-.bubbles span:nth-child(5) {
-    left: 80%;
-    width: 30px;
-    height: 30px;
-    animation-delay: 2s;
-}
-
-.bubbles span:nth-child(6) {
-    left: 95%;
-    width: 40px;
-    height: 40px;
-    animation-delay: 6s;
-}
-
-.bubbles span:nth-child(7) {
-    left: 32%;
-    width: 35px;
-    height: 35px;
-    animation-delay: 7s;
-}
-
-.bubbles span:nth-child(8) {
-    left: 72%;
-    width: 25px;
-    height: 25px;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: translateY(-120vh) scale(1.5);
-        opacity: 0;
-    }
-}
-
-/* SCREENS */
-
-.screen {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    text-align: center;
-}
-
-.panel {
-    width: 100%;
-    max-width: 780px;
-    padding: 40px 25px;
-    border-radius: 25px;
-    background: rgba(3, 17, 48, 0.88);
-    border: 2px solid var(--neon);
-    box-shadow:
-        0 0 15px var(--blue),
-        0 0 35px rgba(0,234,255,0.25),
-        inset 0 0 20px rgba(0,123,255,0.08);
-    animation: appear 1.2s ease;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* NEON LOGO */
-
-.logo {
-    width: 140px;
-    height: 140px;
-    display: block;
-    margin: 0 auto 25px;
-    object-fit: contain;
-    border-radius: 50%;
-    background: var(--dark-blue);
-    border: 3px solid var(--neon);
-    box-shadow:
-        0 0 12px var(--neon),
-        0 0 30px var(--blue);
-    animation: neonGlow 2s infinite alternate;
-}
-
-@keyframes neonGlow {
-    from {
-        box-shadow:
-            0 0 8px var(--neon),
-            0 0 15px var(--blue);
-    }
-
-    to {
-        box-shadow:
-            0 0 20px var(--neon),
-            0 0 45px var(--blue);
-    }
-}
-
-/* HEADINGS */
-
-h1 {
-    color: var(--neon);
-    font-size: clamp(27px, 5vw, 43px);
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    text-shadow:
-        0 0 8px var(--neon),
-        0 0 22px var(--blue);
-    animation: titleGlow 2s infinite alternate;
-}
-
-h2 {
-    color: var(--light-neon);
-    margin: 28px 0 15px;
-    text-shadow: 0 0 12px var(--neon);
-}
-
-@keyframes titleGlow {
-    from {
-        text-shadow: 0 0 8px var(--neon);
-    }
-
-    to {
-        text-shadow:
-            0 0 18px var(--neon),
-            0 0 30px var(--blue);
-    }
-}
-
-p {
-    color: var(--light-neon);
-    font-size: 17px;
-    line-height: 1.9;
-}
-
-/* NEON BUTTON */
-
-button {
-    margin-top: 30px;
-    padding: 15px 40px;
-    border: 2px solid var(--neon);
-    border-radius: 40px;
-    background: linear-gradient(90deg,
-        #063b8a, #087bff, #00cfe8);
-    color: var(--neon);
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(0,234,255,0.4);
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.08);
-    box-shadow:
-        0 0 15px var(--neon),
-        0 0 35px var(--blue);
-    background: #063b8a;
-}
-
-/* MAIN PAGE */
-
-#mainPage {
-    display: none;
-}
-
-.contact {
-    margin-top: 25px;
-    padding: 22px;
-    border-radius: 18px;
-    background: rgba(0, 65, 150, 0.18);
-    border: 1px solid var(--neon);
-    box-shadow:
-        0 0 15px rgba(0,234,255,0.15),
-        inset 0 0 15px rgba(0,123,255,0.08);
-}
-
-.phone {
-    display: inline-block;
-    margin: 5px;
-    padding: 8px 12px;
-    border: 1px solid rgba(0,234,255,0.45);
-    border-radius: 10px;
-    background: rgba(0,123,255,0.12);
-}
-
-a {
-    color: var(--neon);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-a:hover {
-    color: var(--light-neon);
-    text-shadow: 0 0 12px var(--neon);
-}
-
-footer {
-    margin-top: 30px;
-    color: #48caff;
-    font-size: 13px;
-}
-
-/* MOBILE RESPONSIVE */
-
-@media (max-width: 480px) {
-    .panel {
-        padding: 30px 18px;
-    }
-
-    .logo {
-        width: 115px;
-        height: 115px;
-    }
-
-    p {
-        font-size: 15px;
-    }
-
-    h1 {
-        letter-spacing: 1px;
-    }
-
-    button {
-        padding: 13px 30px;
-    }
-}
+:root{--navy:#061b49;--blue:#087cf0;--sky:#8be9ff;--pale:#dff8ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#f5fbff;background:linear-gradient(135deg,#04102f,#073b86,#0794d8,#071b4b);background-size:300% 300%;animation:bgmove 15s ease infinite;min-height:100vh}
+@keyframes bgmove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 15% 20%,#7beaff36,transparent 25%),radial-gradient(circle at 85% 70%,#1688ff45,transparent 30%);z-index:-1}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.welcome{text-align:center;width:min(600px,100%);padding:45px 24px;border:1px solid #a4eaff70;border-radius:28px;background:#051b3f99;box-shadow:0 0 45px #20b9ff40;backdrop-filter:blur(12px)}
+.logo{width:112px;height:112px;margin:0 auto 22px;border-radius:28px;display:grid;place-items:center;color:#061b49;background:linear-gradient(135deg,#e9fdff,#66dfff,#1688ff);box-shadow:0 0 30px #43d5ff90;transform:rotate(-4deg);border:3px solid #d9faff;overflow:hidden}.logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:inherit}
+h1{font-size:clamp(28px,5vw,46px);margin:8px 0;text-shadow:0 0 18px #5edfff7a}
+.welcome p{color:#d5f4ff;line-height:1.7}
+button{font-weight:800;letter-spacing:.5px;cursor:pointer;border:0;border-radius:13px;padding:14px 22px;color:#03183b;background:linear-gradient(110deg,#d8fbff,#58d9ff,#80aaff);box-shadow:0 7px 25px #0ab9ff40;transition:transform .2s,filter .2s}
+button:hover{transform:translateY(-3px);filter:brightness(1.1)}
+#loading{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;text-align:center;background:#03112bd9;backdrop-filter:blur(12px)}
+#loading .loaderbox{padding:35px;border-radius:25px;background:#082859e8;border:1px solid #8deaff80;box-shadow:0 0 45px #27cfff55}
+.spinner{width:45px;height:45px;border:4px solid #ffffff35;border-top-color:#72eaff;border-radius:50%;animation:spin .7s linear infinite;margin:20px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+#main{display:none;max-width:1050px;margin:auto;padding:24px}
+.topbar{display:flex;align-items:center;gap:15px;padding:17px;border-radius:20px;background:#031a3fba;border:1px solid #83dfff55;box-shadow:0 0 30px #006dff25}
+.topbar .logo{width:65px;height:65px;font-size:23px;border-radius:17px;margin:0;flex-shrink:0}
+.topbar h2{margin:0;font-size:clamp(19px,3vw,28px)}.sub{color:#c7f3ff;font-size:13px;margin-top:5px}
+.tabs{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.content-grid .panel{height:100%;margin:0}
+.logo{position:relative}
+#billTab{margin-left:auto;background:linear-gradient(110deg,#d8fbff,#58d9ff,#80aaff);color:#03183b;border-color:#b8f3ff}
+@media(max-width:700px){.content-grid{grid-template-columns:1fr}#billTab{margin-left:0}}
+.tab{background:#092b60;border:1px solid #6edbff70;color:#e9fbff;box-shadow:none}.tab.active{background:linear-gradient(120deg,#c9f8ff,#55d5ff);color:#061b49}
+.panel{background:#061b49b8;border:1px solid #82e7ff66;border-radius:20px;padding:25px;box-shadow:0 10px 35px #00102d4a;backdrop-filter:blur(8px)}
+.panel h3{margin-top:0;font-size:24px;color:#9ceeff}
+.details{line-height:2.2;font-size:18px;overflow-wrap:anywhere}.details a{color:#c5f7ff;text-decoration:none}.details a:hover{text-decoration:underline}
+.address{font-size:20px;line-height:1.9}
+.bill-button{margin-top:20px;background:linear-gradient(100deg,#e5fdff,#62dbff,#a1baff);font-size:16px}
+#billPage{display:none;position:fixed;inset:0;z-index:30;background:#f4f6f4}
+.billhead{height:auto;min-height:55px;background:#061b49;color:white;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px}
+.billhead button{padding:10px 14px}
+#billFrame{width:100%;height:calc(100% - 60px);border:0;background:white}
+footer{text-align:center;color:#c4edff;font-size:12px;padding:25px}
+@media(max-width:600px){#main{padding:12px}.welcome{padding:35px 18px}.panel{padding:18px}.tabs button{flex:1}.topbar{padding:13px}.topbar .logo{width:54px;height:54px;font-size:20px}}
 </style>
 </head>
-
 <body>
-
-<!-- FLOATING NEON BUBBLES -->
-
-<div class="bubbles">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<section id="welcome" class="screen">
+ <div class="welcome">
+  <div class="logo"><img src="logo.png" alt="MN Catering Service Logo"></div>
+  <h1>MN CATERING SERVICE</h1>
+  <p>Quality Service • Trusted Taste • Ratnapura</p>
+  <button id="continueBtn" type="button">CONTINUE&nbsp; →</button>
+ </div>
+</section>
+<div id="loading">
+ <div class="loaderbox"><div class="logo"><img src="logo.png" alt="MN Catering Service Logo"></div><h2>MN CATERING SERVICE</h2><div class="spinner"></div><p>Loading your experience...</p></div>
 </div>
-
-<!-- WELCOME SCREEN -->
-
-<section class="screen" id="welcome">
-
-    <div class="panel">
-
-        <img src="logo.png"
-             alt="MN Catering Service Logo"
-             class="logo">
-
-        <h1>MN CATERING SERVICE</h1>
-
-        <p>WELCOME TO OUR SERVICE</p>
-        <p>QUALITY • TASTE • EXCELLENCE</p>
-
-        <button onclick="continueSite()">
-            CONTINUE ➜
-        </button>
-
-    </div>
-
+<main id="main">
+ <header class="topbar"><div class="logo"><img src="logo.png" alt="MN Catering Service Logo"></div><div><h2>MN CATERING SERVICE</h2><div class="sub">WELCOME • RATNAPURA, SRI LANKA</div></div></header>
+ <nav class="tabs" aria-label="Main navigation">
+  <button class="tab active" id="contactTab" onclick="showTab('contact')">📞 CONTACT US</button>
+  <button class="tab" id="addressTab" onclick="showTab('address')">📍 ADDRESS</button>
+  <button class="tab" id="billTab" onclick="openBilling()">🧾 BILL SYSTEM ↗</button>
+ </nav>
+ <div class="content-grid">
+  <section class="panel" id="contactPanel">
+   <h3>📞 CONTACT US</h3>
+   <div class="details">
+    <div>📞 <a href="tel:0712210671">0712210671</a></div>
+    <div>📞 <a href="tel:0772210671">0772210671</a></div>
+    <div>📞 <a href="tel:0779066721">0779066721</a></div>
+    <div>📞 <a href="tel:0777048471">0777048471</a></div>
+   </div>
+  </section>
+  <section class="panel" id="addressPanel">
+   <h3>📍 ADDRESS</h3>
+   <div class="address"><b>MN CATERING SERVICE</b><br>MAHAWALA ROAD,<br>RATNAPURA.</div>
+  </section>
+ </div>
+ <footer>© MN CATERING SERVICE • Thank you for visiting</footer>
+</main>
+<section id="billPage">
+ <div class="billhead"><b>MN CATERING SERVICE — BILL SYSTEM</b><button onclick="closeBilling()">← BACK TO WEBSITE</button></div>
+ <iframe id="billFrame" title="MN Catering Billing System"></iframe>
 </section>
-
-<!-- MAIN WEBSITE -->
-
-<section class="screen" id="mainPage">
-
-    <div class="panel">
-
-        <img src="logo.png"
-             alt="MN Catering Service Logo"
-             class="logo">
-
-        <h1>MN CATERING SERVICE</h1>
-
-        <p>WELCOME TO MN CATERING SERVICE!</p>
-
-        <p>
-            We are happy to be a part of your
-            special occasions and celebrations.
-        </p>
-
-        <h2>OUR SERVICE</h2>
-
-        <p>
-            Catering for your special events,
-            parties and celebrations.
-        </p>
-
-        <p>
-            Contact us to discuss your requirements.
-        </p>
-
-        <!-- ADDRESS AND CONTACT -->
-
-        <div class="contact">
-
-            <h2>OUR ADDRESS</h2>
-
-            <p>
-                MN CATERING SERVICE<br>
-                MAHAWALA ROAD<br>
-                RATNAPURA
-            </p>
-
-            <h2>CONTACT US</h2>
-
-            <p class="phone">
-                <a href="tel:0712210671">
-                    0712210671
-                </a>
-            </p>
-
-            <p class="phone">
-                <a href="tel:0772210671">
-                    0772210671
-                </a>
-            </p>
-
-            <p class="phone">
-                <a href="tel:0779066721">
-                    0779066721
-                </a>
-            </p>
-
-            <p class="phone">
-                <a href="tel:0777048471">
-                    0777048471
-                </a>
-            </p>
-
-        </div>
-
-        <button onclick="openBilling()">OPEN BILLING SYSTEM</button>
-
-        <button onclick="backToWelcome()">
-            BACK TO TOP ↑
-        </button>
-
-        <footer>
-            © MN CATERING SERVICE |
-            ALL RIGHTS RESERVED
-        </footer>
-
-    </div>
-
-</section>
-
-
-<!-- BILLING SYSTEM PAGE -->
-<section id="billingPage" style="display:none;position:relative;z-index:5;min-height:100vh;background:#f4f6f4;color:#1f2933;text-align:left;padding:12px;">
-  <div style="max-width:1200px;margin:0 auto 12px;display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;">
-    <button onclick="closeBilling()" style="margin:0;padding:10px 16px;border-radius:8px;background:#173d32;color:white;border:0;">← BACK TO WEBSITE</button>
-  </div>
-  <iframe id="billingFrame" title="MN Catering Service Billing System" style="display:block;width:100%;height:calc(100vh - 70px);min-height:800px;border:0;border-radius:12px;background:#f4f6f4;"></iframe>
-</section>
-
-<!-- WEBSITE FUNCTIONS -->
-
 <script>
-
-const billingHTML = "<!doctype html>\n<html lang=\"si\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"theme-color\" content=\"#173d32\">\n<title>MN CATERING SERVICE | Billing</title>\n<style>\n:root{--green:#173d32;--gold:#d6a84f;--bg:#f4f6f4;--ink:#1f2933;--muted:#65736c;--line:#dce4de;--white:#fff}\n*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,\"Noto Sans Sinhala\",sans-serif;color:var(--ink)}\nheader{background:var(--green);color:white;padding:18px 16px}header h1{font-size:21px;margin:0 0 5px}header p{margin:0;color:#dce9e0;font-size:13px}\n.wrap{max-width:1100px;margin:auto;padding:14px}.notice{background:#fff8e6;border:1px solid #ead59f;padding:11px 13px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:14px}\nnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}button,.btn{border:0;border-radius:8px;padding:10px 13px;background:var(--green);color:white;font-weight:600;cursor:pointer}button.secondary{background:#e5ece7;color:var(--green)}button.danger{background:#9c2d2d}button.gold{background:var(--gold);color:#222}\n.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:14px;box-shadow:0 2px 8px #102d1a08}\nh2{font-size:18px;margin:0 0 13px;color:var(--green)}h3{font-size:15px;margin:14px 0 8px}\n.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}\nlabel{font-size:13px;font-weight:600;display:block;margin-bottom:5px;color:#43534a}input,select,textarea{width:100%;padding:10px;border:1px solid #cbd6ce;border-radius:8px;background:white;font-size:15px;color:var(--ink)}textarea{min-height:70px}\ntable{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left}th{background:#f0f5f1}\n.tablewrap{overflow-x:auto}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#f0f5f1;padding:12px;border-radius:9px}.metric small{display:block;color:var(--muted);margin-bottom:5px}.metric strong{font-size:18px}\n.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.right{text-align:right}.muted{color:var(--muted);font-size:12px}.hidden{display:none!important}.items input{min-width:70px;padding:8px}.items .desc{min-width:150px}\nfooter{text-align:center;color:var(--muted);font-size:12px;padding:12px}\n@media(max-width:650px){.grid,.grid3{grid-template-columns:1fr}.summary{grid-template-columns:1fr}.wrap{padding:9px}header h1{font-size:19px}.panel{padding:12px}}\n@media print{header,nav,.notice,.no-print,footer{display:none!important}body{background:white}.wrap{max-width:none;padding:0}.panel{box-shadow:none;border:0;padding:0}.print-only{display:block!important}}\n</style>\n</head>\n<body>\n<header><h1>MN CATERING SERVICE</h1><p>Invoice & Billing System • Ratnapura • මුදල් ඒකකය: LKR</p></header>\n<div class=\"wrap\">\n<div class=\"notice\"><b>පරීක්ෂණ අනුවාදය:</b> මෙම අනුවාදය දත්ත මෙම උපාංගයේ browser එක තුළ පමණක් සුරකියි. වෙනත් සේවක දුරකථන අතර දත්ත හුවමාරු නොවේ. සියලු උපාංග සමඟ සුරක්ෂිතව සමමුහුර්ත කිරීමට පසුව online database සහ staff login සම්බන්ධ කළ යුතුය. Browser data මැකීමෙන් දත්ත නැතිවිය හැකි බැවින් CSV backup නිතර ගන්න.</div>\n<nav class=\"no-print\">\n<button onclick=\"showTab('new')\">➕ නව බිල්පත</button><button class=\"secondary\" onclick=\"showTab('records')\">📄 බිල්පත් ලැයිස්තුව</button><button class=\"secondary\" onclick=\"showTab('settings')\">⚙️ ව්‍යාපාර තොරතුරු</button>\n</nav>\n<section id=\"tab-new\">\n<div class=\"panel\">\n<h2>නව බිල්පතක් සකස් කරන්න</h2>\n<div class=\"grid\">\n<div><label>බිල්පත් වර්ගය</label><select id=\"type\" onchange=\"updateInvoiceNo();updateRentalFields()\"><option value=\"FOOD\">ආහාර ඇණවුම</option><option value=\"CAFE\">Nescafe / Nestea අලෙවිය</option><option value=\"RENT\">භාණ්ඩ කුලියට දීම</option></select></div>\n<div><label>බිල්පත් අංකය (ස්වයංක්‍රීය)</label><input id=\"invoiceNo\" readonly></div>\n<div><label>දිනය</label><input id=\"date\" type=\"date\" onchange=\"updateInvoiceNo()\"></div>\n<div><label>පාරිභෝගික නම</label><input id=\"customer\" placeholder=\"පාරිභෝගික නම\"></div>\n<div><label>தொலைபேசி / දුරකථන අංකය</label><input id=\"phone\" inputmode=\"tel\" placeholder=\"දුරකථන අංකය\"></div>\n<div><label>උත්සවය / සටහන</label><input id=\"event\" placeholder=\"උත්සවය හෝ අමතර විස්තර\"></div>\n</div>\n<div id=\"rentalFields\" class=\"grid hidden\" style=\"margin-top:12px\">\n<div><label>කුලියට දුන් දිනය</label><input id=\"rentStart\" type=\"date\"></div>\n<div><label>ආපසු ලබාදිය යුතු දිනය</label><input id=\"rentEnd\" type=\"date\"></div>\n<div><label>කුලී ගණනය</label><select id=\"rentMode\"><option value=\"daily\">දින ගණන × ඒකක දෛනික ගාස්තුව</option><option value=\"flat\">මුළු කාලයට ඒකකයක ස්ථාවර ගාස්තුව</option></select></div>\n</div>\n<h3>භාණ්ඩ / සේවා</h3>\n<div class=\"tablewrap\"><table class=\"items\"><thead><tr><th>විස්තරය</th><th>ප්‍රමාණය</th><th>ඒකක මිල (රු.)</th><th>එකතුව (රු.)</th><th class=\"no-print\"></th></tr></thead><tbody id=\"itemsBody\"></tbody></table></div>\n<div class=\"row no-print\" style=\"margin-top:10px\"><button class=\"secondary\" onclick=\"addItem()\">+ භාණ්ඩයක් එක් කරන්න</button></div>\n<div class=\"grid3\" style=\"margin-top:14px\">\n<div><label>වට්ටම (රු.)</label><input id=\"discount\" type=\"number\" min=\"0\" value=\"0\" oninput=\"calculate()\"></div>\n<div><label>ප්‍රවාහන / අමතර ගාස්තු (රු.)</label><input id=\"extra\" type=\"number\" min=\"0\" value=\"0\" oninput=\"calculate()\"></div>\n<div><label>තැන්පතු මුදල (රු.) — කුලී බිල්පත්</label><input id=\"deposit\" type=\"number\" min=\"0\" value=\"0\" oninput=\"calculate()\"></div>\n</div>\n<div class=\"grid\" style=\"margin-top:12px\">\n<div><label>ලැබුණු මුදල / අත්තිකාරම (රු.)</label><input id=\"paid\" type=\"number\" min=\"0\" value=\"0\" oninput=\"calculate()\"></div>\n<div><label>ගෙවීම් ක්‍රමය</label><select id=\"payMethod\"><option>මුදල්</option><option>බැංකු මාරු</option><option>කාඩ්පත</option><option>වෙනත්</option></select></div>\n</div>\n<div class=\"summary\" style=\"margin-top:14px\">\n<div class=\"metric\"><small>භාණ්ඩ එකතුව</small><strong id=\"subtotal\">රු. 0.00</strong></div>\n<div class=\"metric\"><small>මුළු බිල්පත</small><strong id=\"total\">රු. 0.00</strong></div>\n<div class=\"metric\"><small>ගෙවීමට ඉතිරි</small><strong id=\"balance\">රු. 0.00</strong></div>\n</div>\n<div class=\"row no-print\" style=\"margin-top:15px\"><button onclick=\"saveInvoice()\">බිල්පත සුරකින්න</button><button class=\"gold\" onclick=\"printInvoice()\">මුද්‍රණය / PDF</button><button class=\"secondary\" onclick=\"resetForm()\">නව බිල්පතකට හිස් කරන්න</button></div>\n<p class=\"muted\">PDF ලබාගැනීමට “මුද්‍රණය / PDF” තෝරා Print dialog එකේ “Save as PDF” තෝරන්න.</p>\n</div>\n</section>\n<section id=\"tab-records\" class=\"hidden\">\n<div class=\"panel\"><h2>සුරැකි බිල්පත්</h2><div class=\"row no-print\"><button class=\"secondary\" onclick=\"exportCSV()\">CSV Backup ලබාගන්න</button><button class=\"secondary\" onclick=\"exportJSON()\">සම්පූර්ණ Backup (JSON)</button><button class=\"secondary\" onclick=\"document.getElementById('importFile').click()\">Backup නැවත ලබාගන්න</button><input id=\"importFile\" class=\"hidden\" type=\"file\" accept=\".json\" onchange=\"importJSON(event)\"></div><div class=\"tablewrap\" style=\"margin-top:12px\"><table><thead><tr><th>බිල්පත් අංකය</th><th>දිනය</th><th>වර්ගය</th><th>පාරිභෝගිකයා</th><th>මුළු මුදල</th><th>ඉතිරිය</th><th>ක්‍රියා</th></tr></thead><tbody id=\"recordsBody\"></tbody></table></div><p id=\"emptyMsg\" class=\"muted\">තවම බිල්පත් සුරකිනු ලැබ නැත.</p></div>\n</section>\n<section id=\"tab-settings\" class=\"hidden\">\n<div class=\"panel\"><h2>ව්‍යාපාර තොරතුරු</h2><div class=\"grid\"><div><label>ව්‍යාපාරයේ නම</label><input id=\"bizName\" value=\"MN CATERING SERVICE\"></div><div><label>ලිපිනය</label><input id=\"bizAddress\" value=\"79/50, MAHAWALA ROAD, RATNAPURA, SRI LANKA\"></div><div><label>දුරකථන අංක (කොමාවෙන් වෙන් කරන්න)</label><textarea id=\"bizPhones\">0712210671, 0772210671, 0779066721, 0777048471</textarea></div><div><label>බිල්පත් පාදක සටහන</label><input id=\"bizFooter\" value=\"ඔබගේ සේවයට ස්තුතියි!\"></div></div><div class=\"row no-print\" style=\"margin-top:12px\"><button onclick=\"saveSettings()\">තොරතුරු සුරකින්න</button></div><p class=\"muted\">මෙම තොරතුරුද දැනට මෙම browser එකේ පමණක් සුරැකේ.</p></div>\n</section>\n<section id=\"printArea\" class=\"hidden\"></section>\n<footer>MN CATERING SERVICE • Billing prototype</footer>\n</div>\n<script>\nconst $=id=>document.getElementById(id);\nconst money=n=>'රු. '+(Number(n)||0).toLocaleString('en-LK',{minimumFractionDigits:2,maximumFractionDigits:2});\nconst typeNames={FOOD:'ආහාර ඇණවුම',CAFE:'Nescafe / Nestea',RENT:'භාණ්ඩ කුලියට දීම'};\nlet invoices=JSON.parse(localStorage.getItem('mn_invoices')||'[]');\nlet settings=JSON.parse(localStorage.getItem('mn_settings')||'{}');\nfunction today(){return new Date().toLocaleDateString('en-CA')}\n$('date').value=today();$('rentStart').value=today();$('rentEnd').value=today();\nfunction showTab(t){['new','records','settings'].forEach(x=>$('tab-'+x).classList.toggle('hidden',x!==t));if(t==='records')renderRecords()}\nfunction updateInvoiceNo(){let d=($('date').value||today()).replaceAll('-','');let type=$('type').value;let count=invoices.filter(i=>i.date===($('date').value||today())&&i.type===type).length+1;$('invoiceNo').value=`MN-${d}-${type}-${String(count).padStart(3,'0')}`}\nfunction updateRentalFields(){$('rentalFields').classList.toggle('hidden',$('type').value!=='RENT');calculate()}\nfunction addItem(desc='',qty=1,price=0){let tr=document.createElement('tr');tr.innerHTML=`<td><input class=\"desc\" placeholder=\"භාණ්ඩය / සේවාව\" value=\"${escapeHtml(desc)}\"></td><td><input class=\"qty\" type=\"number\" min=\"0\" step=\"0.01\" value=\"${qty}\"></td><td><input class=\"price\" type=\"number\" min=\"0\" step=\"0.01\" value=\"${price}\"></td><td class=\"lineTotal\">රු. 0.00</td><td class=\"no-print\"><button class=\"danger\" onclick=\"this.closest('tr').remove();calculate()\">×</button></td>`;tr.querySelectorAll('input').forEach(i=>i.addEventListener('input',calculate));$('itemsBody').appendChild(tr);calculate()}\nfunction escapeHtml(s){return String(s).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]))}\nfunction rentalDays(){let a=new Date(($('rentStart').value||today())+'T00:00:00'),b=new Date(($('rentEnd').value||$('rentStart').value||today())+'T00:00:00');return Math.max(1,Math.floor((b-a)/86400000)+1)}\nfunction calculate(){let subtotal=0;[...$('itemsBody').rows].forEach(r=>{let q=Number(r.querySelector('.qty').value)||0,p=Number(r.querySelector('.price').value)||0;let line=q*p;if($('type').value==='RENT'&&$('rentMode').value==='daily')line*=rentalDays();r.querySelector('.lineTotal').textContent=money(line);subtotal+=line});let total=Math.max(0,subtotal-(Number($('discount').value)||0)+(Number($('extra').value)||0));let paid=Number($('paid').value)||0;let balance=Math.max(0,total-paid);$('subtotal').textContent=money(subtotal);$('total').textContent=money(total);$('balance').textContent=money(balance);return{subtotal,total,paid,balance}}\nfunction formData(){let c=calculate();return{type:$('type').value,invoiceNo:$('invoiceNo').value,date:$('date').value,customer:$('customer').value.trim(),phone:$('phone').value.trim(),event:$('event').value.trim(),rentStart:$('rentStart').value,rentEnd:$('rentEnd').value,rentMode:$('rentMode').value,rentDays:rentalDays(),items:[...$('itemsBody').rows].map(r=>({description:r.querySelector('.desc').value,qty:Number(r.querySelector('.qty').value)||0,price:Number(r.querySelector('.price').value)||0,lineTotal:Number(r.querySelector('.lineTotal').textContent.replace(/[^\\d.-]/g,''))||0})),discount:Number($('discount').value)||0,extra:Number($('extra').value)||0,deposit:Number($('deposit').value)||0,paid:c.paid,payMethod:$('payMethod').value,subtotal:c.subtotal,total:c.total,balance:c.balance,createdAt:new Date().toISOString()}}\nfunction saveInvoice(){let d=formData();if(!d.customer){alert('කරුණාකර පාරිභෝගික නම ඇතුළත් කරන්න.');return}if(!d.items.length||!d.items.some(i=>i.description.trim())){alert('අවම වශයෙන් එක් භාණ්ඩයක් හෝ සේවාවක් ඇතුළත් කරන්න.');return}if(d.paid>d.total){if(!confirm('ලැබුණු මුදල මුළු බිල්පතට වඩා වැඩියි. එසේම සුරකින්නද?'))return;d.balance=0}if(invoices.some(i=>i.invoiceNo===d.invoiceNo)){updateInvoiceNo();d.invoiceNo=$('invoiceNo').value}invoices.push(d);localStorage.setItem('mn_invoices',JSON.stringify(invoices));alert('බිල්පත සුරකින ලදී: '+d.invoiceNo);renderRecords();printInvoice(d);resetForm()}\nfunction resetForm(){$('customer').value='';$('phone').value='';$('event').value='';$('discount').value=0;$('extra').value=0;$('deposit').value=0;$('paid').value=0;$('itemsBody').innerHTML='';addItem();updateInvoiceNo()}\nfunction getSettings(){return{bizName:$('bizName').value.trim()||'MN CATERING SERVICE',bizAddress:$('bizAddress').value.trim(),bizPhones:$('bizPhones').value.trim(),bizFooter:$('bizFooter').value.trim()}}\nfunction saveSettings(){settings=getSettings();localStorage.setItem('mn_settings',JSON.stringify(settings));alert('ව්‍යාපාර තොරතුරු සුරකින ලදී.')}\nfunction loadSettings(){if(settings.bizName)$('bizName').value=settings.bizName;if(settings.bizAddress!==undefined)$('bizAddress').value=settings.bizAddress;if(settings.bizPhones)$('bizPhones').value=settings.bizPhones;if(settings.bizFooter)$('bizFooter').value=settings.bizFooter}\nfunction renderRecords(){$('recordsBody').innerHTML='';$('emptyMsg').classList.toggle('hidden',invoices.length>0);[...invoices].reverse().forEach(i=>{let tr=document.createElement('tr');tr.innerHTML=`<td>${escapeHtml(i.invoiceNo)}</td><td>${escapeHtml(i.date)}</td><td>${typeNames[i.type]}</td><td>${escapeHtml(i.customer)}</td><td>${money(i.total)}</td><td>${money(i.balance)}</td><td><button class=\"secondary\" onclick=\"reprint('${escapeHtml(i.invoiceNo)}')\">PDF/මුද්‍රණය</button></td>`;$('recordsBody').appendChild(tr)})}\nfunction receiptHTML(i){let s=settings.bizName?settings:getSettings();return `<div style=\"font-family:Arial,sans-serif;color:#222;max-width:800px;margin:auto;padding:20px\"><h1 style=\"color:#173d32;margin-bottom:4px\">${escapeHtml(s.bizName||'MN CATERING SERVICE')}</h1><div>${escapeHtml(s.bizAddress||'')}</div><div>${escapeHtml(s.bizPhones||'')}</div><hr><h2>බිල්පත / INVOICE</h2><p><b>බිල්පත් අංකය:</b> ${escapeHtml(i.invoiceNo)}<br><b>දිනය:</b> ${escapeHtml(i.date)}<br><b>වර්ගය:</b> ${typeNames[i.type]}</p><p><b>පාරිභෝගිකයා:</b> ${escapeHtml(i.customer)}<br><b>දුරකථනය:</b> ${escapeHtml(i.phone||'-')}<br><b>සටහන:</b> ${escapeHtml(i.event||'-')}</p>${i.type==='RENT'?`<p><b>කුලී දිනය:</b> ${escapeHtml(i.rentStart||'-')} – ${escapeHtml(i.rentEnd||'-')} (${i.rentDays} දින)</p>`:''}<table style=\"width:100%;border-collapse:collapse\"><thead><tr><th style=\"text-align:left;border-bottom:1px solid #aaa;padding:8px\">විස්තරය</th><th style=\"text-align:right;border-bottom:1px solid #aaa;padding:8px\">ප්‍රමාණය</th><th style=\"text-align:right;border-bottom:1px solid #aaa;padding:8px\">ඒකක මිල</th><th style=\"text-align:right;border-bottom:1px solid #aaa;padding:8px\">එකතුව</th></tr></thead><tbody>${i.items.map(x=>`<tr><td style=\"padding:8px;border-bottom:1px solid #ddd\">${escapeHtml(x.description)}</td><td style=\"text-align:right;padding:8px;border-bottom:1px solid #ddd\">${x.qty}</td><td style=\"text-align:right;padding:8px;border-bottom:1px solid #ddd\">${money(x.price)}</td><td style=\"text-align:right;padding:8px;border-bottom:1px solid #ddd\">${money(x.lineTotal)}</td></tr>`).join('')}</tbody></table><div style=\"margin-top:15px;text-align:right;line-height:1.9\">භාණ්ඩ එකතුව: ${money(i.subtotal)}<br>වට්ටම: ${money(i.discount)}<br>අමතර ගාස්තු: ${money(i.extra)}<br>${i.type==='RENT'?'තැන්පතුව (තොරතුරු සඳහා): '+money(i.deposit)+'<br>':''}<b>මුළු මුදල: ${money(i.total)}</b><br>ලැබුණු මුදල: ${money(i.paid)}<br><b>ගෙවීමට ඉතිරි: ${money(i.balance)}</b><br>ගෙවීම් ක්‍රමය: ${escapeHtml(i.payMethod)}</div><hr><p>${escapeHtml(s.bizFooter||'ඔබගේ සේවයට ස්තුතියි!')}</p></div>`}\nfunction printInvoice(data){let i=data||formData();let w=window.open('','_blank');if(!w){alert('මුද්‍රණය සඳහා browser popup අවසර දෙන්න.');return}w.document.write('<html><head><meta charset=\"utf-8\"><title>'+escapeHtml(i.invoiceNo)+'</title><style>body{font-family:Arial,sans-serif}@media print{button{display:none}}</style></head><body>'+receiptHTML(i)+'<script>window.onload=()=>window.print()<\\/script></body></html>');w.document.close()}\nfunction reprint(no){let i=invoices.find(x=>x.invoiceNo===no);if(i)printInvoice(i)}\nfunction exportCSV(){let rows=[['Invoice','Date','Type','Customer','Phone','Subtotal','Discount','Extra','Total','Paid','Balance','Payment Method'],...invoices.map(i=>[i.invoiceNo,i.date,i.type,i.customer,i.phone,i.subtotal,i.discount,i.extra,i.total,i.paid,i.balance,i.payMethod])];let csv=rows.map(r=>r.map(v=>'\"'+String(v??'').replaceAll('\"','\"\"')+'\"').join(',')).join('\\r\\n');download('\\ufeff'+csv,'mn-catering-invoices.csv','text/csv;charset=utf-8;')}\nfunction exportJSON(){download(JSON.stringify({invoices,settings},null,2),'mn-catering-backup.json','application/json')}\nfunction download(content,name,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();URL.revokeObjectURL(a.href)}\nfunction importJSON(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d.invoices))throw Error();if(!confirm('දැනට ඇති දත්ත වෙනුවට backup දත්ත යොදන්නද?'))return;invoices=d.invoices;settings=d.settings||{};localStorage.setItem('mn_invoices',JSON.stringify(invoices));localStorage.setItem('mn_settings',JSON.stringify(settings));loadSettings();renderRecords();alert('Backup නැවත ලබාගන්නා ලදී.')}catch(err){alert('මෙම backup ගොනුව කියවිය නොහැක.')}};r.readAsText(f)}\nloadSettings();addItem();updateInvoiceNo();updateRentalFields();\n<\\/script>\n</body></html>";
+function continueSite(){
+ document.getElementById('welcome').style.display='none';
+ const loading=document.getElementById('loading');loading.style.display='flex';
+ setTimeout(()=>{loading.style.display='none';document.getElementById('main').style.display='block';},2000);
+}
+document.getElementById('continueBtn').addEventListener('click', continueSite);
+function showTab(tab){
+ const contact=tab==='contact';
+ document.getElementById('contactPanel').style.display='block';
+ document.getElementById('addressPanel').style.display='block';
+ document.getElementById('contactTab').classList.toggle('active',contact);
+ document.getElementById('addressTab').classList.toggle('active',!contact);
+}
+const billingHTML = decodeURIComponent(escape(atob('PCFkb2N0eXBlIGh0bWw+CjxodG1sIGxhbmc9InNpIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xIj4KPG1ldGEgbmFtZT0idGhlbWUtY29sb3IiIGNvbnRlbnQ9IiMxNzNkMzIiPgo8dGl0bGU+TU4gQ0FURVJJTkcgU0VSVklDRSB8IEJpbGxpbmc8L3RpdGxlPgo8c3R5bGU+Cjpyb290ey0tZ3JlZW46IzE3M2QzMjstLWdvbGQ6I2Q2YTg0ZjstLWJnOiNmNGY2ZjQ7LS1pbms6IzFmMjkzMzstLW11dGVkOiM2NTczNmM7LS1saW5lOiNkY2U0ZGU7LS13aGl0ZTojZmZmfQoqe2JveC1zaXppbmc6Ym9yZGVyLWJveH1ib2R5e21hcmdpbjowO2JhY2tncm91bmQ6dmFyKC0tYmcpO2ZvbnQtZmFtaWx5OkFyaWFsLCJOb3RvIFNhbnMgU2luaGFsYSIsc2Fucy1zZXJpZjtjb2xvcjp2YXIoLS1pbmspfQpoZWFkZXJ7YmFja2dyb3VuZDp2YXIoLS1ncmVlbik7Y29sb3I6d2hpdGU7cGFkZGluZzoxOHB4IDE2cHh9aGVhZGVyIGgxe2ZvbnQtc2l6ZToyMXB4O21hcmdpbjowIDAgNXB4fWhlYWRlciBwe21hcmdpbjowO2NvbG9yOiNkY2U5ZTA7Zm9udC1zaXplOjEzcHh9Ci53cmFwe21heC13aWR0aDoxMTAwcHg7bWFyZ2luOmF1dG87cGFkZGluZzoxNHB4fS5ub3RpY2V7YmFja2dyb3VuZDojZmZmOGU2O2JvcmRlcjoxcHggc29saWQgI2VhZDU5ZjtwYWRkaW5nOjExcHggMTNweDtib3JkZXItcmFkaXVzOjEwcHg7Zm9udC1zaXplOjEzcHg7bGluZS1oZWlnaHQ6MS41O21hcmdpbi1ib3R0b206MTRweH0KbmF2e2Rpc3BsYXk6ZmxleDtnYXA6OHB4O2ZsZXgtd3JhcDp3cmFwO21hcmdpbi1ib3R0b206MTRweH1idXR0b24sLmJ0bntib3JkZXI6MDtib3JkZXItcmFkaXVzOjhweDtwYWRkaW5nOjEwcHggMTNweDtiYWNrZ3JvdW5kOnZhcigtLWdyZWVuKTtjb2xvcjp3aGl0ZTtmb250LXdlaWdodDo2MDA7Y3Vyc29yOnBvaW50ZXJ9YnV0dG9uLnNlY29uZGFyeXtiYWNrZ3JvdW5kOiNlNWVjZTc7Y29sb3I6dmFyKC0tZ3JlZW4pfWJ1dHRvbi5kYW5nZXJ7YmFja2dyb3VuZDojOWMyZDJkfWJ1dHRvbi5nb2xke2JhY2tncm91bmQ6dmFyKC0tZ29sZCk7Y29sb3I6IzIyMn0KLnBhbmVse2JhY2tncm91bmQ6d2hpdGU7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1saW5lKTtib3JkZXItcmFkaXVzOjEycHg7cGFkZGluZzoxNXB4O21hcmdpbi1ib3R0b206MTRweDtib3gtc2hhZG93OjAgMnB4IDhweCAjMTAyZDFhMDh9Cmgye2ZvbnQtc2l6ZToxOHB4O21hcmdpbjowIDAgMTNweDtjb2xvcjp2YXIoLS1ncmVlbil9aDN7Zm9udC1zaXplOjE1cHg7bWFyZ2luOjE0cHggMCA4cHh9Ci5ncmlke2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDIsbWlubWF4KDAsMWZyKSk7Z2FwOjExcHh9LmdyaWQze2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDMsbWlubWF4KDAsMWZyKSk7Z2FwOjExcHh9CmxhYmVse2ZvbnQtc2l6ZToxM3B4O2ZvbnQtd2VpZ2h0OjYwMDtkaXNwbGF5OmJsb2NrO21hcmdpbi1ib3R0b206NXB4O2NvbG9yOiM0MzUzNGF9aW5wdXQsc2VsZWN0LHRleHRhcmVhe3dpZHRoOjEwMCU7cGFkZGluZzoxMHB4O2JvcmRlcjoxcHggc29saWQgI2NiZDZjZTtib3JkZXItcmFkaXVzOjhweDtiYWNrZ3JvdW5kOndoaXRlO2ZvbnQtc2l6ZToxNXB4O2NvbG9yOnZhcigtLWluayl9dGV4dGFyZWF7bWluLWhlaWdodDo3MHB4fQp0YWJsZXt3aWR0aDoxMDAlO2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZTtmb250LXNpemU6MTNweH10aCx0ZHtib3JkZXItYm90dG9tOjFweCBzb2xpZCB2YXIoLS1saW5lKTtwYWRkaW5nOjlweCA2cHg7dGV4dC1hbGlnbjpsZWZ0fXRoe2JhY2tncm91bmQ6I2YwZjVmMX0KLnRhYmxld3JhcHtvdmVyZmxvdy14OmF1dG99LnN1bW1hcnl7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoMywxZnIpO2dhcDo4cHh9Lm1ldHJpY3tiYWNrZ3JvdW5kOiNmMGY1ZjE7cGFkZGluZzoxMnB4O2JvcmRlci1yYWRpdXM6OXB4fS5tZXRyaWMgc21hbGx7ZGlzcGxheTpibG9jaztjb2xvcjp2YXIoLS1tdXRlZCk7bWFyZ2luLWJvdHRvbTo1cHh9Lm1ldHJpYyBzdHJvbmd7Zm9udC1zaXplOjE4cHh9Ci5yb3d7ZGlzcGxheTpmbGV4O2dhcDo4cHg7ZmxleC13cmFwOndyYXA7YWxpZ24taXRlbXM6Y2VudGVyfS5yaWdodHt0ZXh0LWFsaWduOnJpZ2h0fS5tdXRlZHtjb2xvcjp2YXIoLS1tdXRlZCk7Zm9udC1zaXplOjEycHh9LmhpZGRlbntkaXNwbGF5Om5vbmUhaW1wb3J0YW50fS5pdGVtcyBpbnB1dHttaW4td2lkdGg6NzBweDtwYWRkaW5nOjhweH0uaXRlbXMgLmRlc2N7bWluLXdpZHRoOjE1MHB4fQpmb290ZXJ7dGV4dC1hbGlnbjpjZW50ZXI7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQtc2l6ZToxMnB4O3BhZGRpbmc6MTJweH0KQG1lZGlhKG1heC13aWR0aDo2NTBweCl7LmdyaWQsLmdyaWQze2dyaWQtdGVtcGxhdGUtY29sdW1uczoxZnJ9LnN1bW1hcnl7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOjFmcn0ud3JhcHtwYWRkaW5nOjlweH1oZWFkZXIgaDF7Zm9udC1zaXplOjE5cHh9LnBhbmVse3BhZGRpbmc6MTJweH19CkBtZWRpYSBwcmludHtoZWFkZXIsbmF2LC5ub3RpY2UsLm5vLXByaW50LGZvb3RlcntkaXNwbGF5Om5vbmUhaW1wb3J0YW50fWJvZHl7YmFja2dyb3VuZDp3aGl0ZX0ud3JhcHttYXgtd2lkdGg6bm9uZTtwYWRkaW5nOjB9LnBhbmVse2JveC1zaGFkb3c6bm9uZTtib3JkZXI6MDtwYWRkaW5nOjB9LnByaW50LW9ubHl7ZGlzcGxheTpibG9jayFpbXBvcnRhbnR9fQo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5Pgo8aGVhZGVyPjxoMT5NTiBDQVRFUklORyBTRVJWSUNFPC9oMT48cD5JbnZvaWNlICYgQmlsbGluZyBTeXN0ZW0g4oCiIFJhdG5hcHVyYSDigKIg4La44LeU4Lav4La94LeKIOC2kuC2muC2muC2ujogTEtSPC9wPjwvaGVhZGVyPgo8ZGl2IGNsYXNzPSJ3cmFwIj4KPGRpdiBjbGFzcz0ibm90aWNlIj48Yj7gtrTgtrvgt5Pgtprgt4rgt4Lgtqsg4LaF4Lax4LeU4LeA4LeP4Lav4La6OjwvYj4g4La44LeZ4La4IOC2heC2seC3lOC3gOC3j+C2r+C2uiDgtq/gtq3gt4rgtq0g4La44LeZ4La4IOC2i+C2tOC3j+C2guC2nOC2uuC3miBicm93c2VyIOC2keC2miDgtq3gt5Tgt4Ug4La04La44Lar4Laa4LeKIOC3g+C3lOC2u+C2muC3kuC2uuC3ki4g4LeA4LeZ4Lax4Lat4LeKIOC3g+C3muC3gOC2miDgtq/gt5Tgtrvgtprgtq7gtrEg4LaF4Lat4La7IOC2r+C2reC3iuC2rSDgt4Tgt5Tgt4Dgtrjgt4/gtrvgt5Qg4Lax4Lec4LeA4LeaLiDgt4Pgt5Lgtrrgtr3gt5Qg4LaL4La04LeP4LaC4LacIOC3g+C2uOC2nyDgt4Pgt5Tgtrvgtprgt4rgt4Lgt5Lgtq3gt4Ag4LeD4La44La44LeU4LeE4LeU4La74LeK4LatIOC2muC3kuC2u+C3k+C2uOC2pyDgtrTgt4Pgt5Tgt4Agb25saW5lIGRhdGFiYXNlIOC3g+C3hCBzdGFmZiBsb2dpbiDgt4Pgtrjgt4rgtrbgtrHgt4rgtrAg4Laa4LeFIOC2uuC3lOC2reC3lOC2ui4gQnJvd3NlciBkYXRhIOC2uOC3kOC2muC3k+C2uOC3meC2seC3iiDgtq/gtq3gt4rgtq0g4Lax4LeQ4Lat4LeS4LeA4LeS4La6IOC3hOC3kOC2muC3kiDgtrbgt5Dgt4Dgt5LgtrHgt4ogQ1NWIGJhY2t1cCDgtrHgt5Lgtq3gtrsg4Lac4Lax4LeK4LaxLjwvZGl2Pgo8bmF2IGNsYXNzPSJuby1wcmludCI+CjxidXR0b24gb25jbGljaz0ic2hvd1RhYignbmV3JykiPuKelSDgtrHgt4Ag4La24LeS4La94LeK4La04LatPC9idXR0b24+PGJ1dHRvbiBjbGFzcz0ic2Vjb25kYXJ5IiBvbmNsaWNrPSJzaG93VGFiKCdyZWNvcmRzJykiPvCfk4Qg4La24LeS4La94LeK4La04Lat4LeKIOC2veC3kOC2uuC3kuC3g+C3iuC2reC3lOC3gDwvYnV0dG9uPjxidXR0b24gY2xhc3M9InNlY29uZGFyeSIgb25jbGljaz0ic2hvd1RhYignc2V0dGluZ3MnKSI+4pqZ77iPIOC3gOC3iuKAjeC2uuC3j+C2tOC3j+C2uyDgtq3gt5zgtrvgtq3gt5Tgtrvgt5Q8L2J1dHRvbj4KPC9uYXY+CjxzZWN0aW9uIGlkPSJ0YWItbmV3Ij4KPGRpdiBjbGFzcz0icGFuZWwiPgo8aDI+4Lax4LeAIOC2tuC3kuC2veC3iuC2tOC2reC2muC3iiDgt4Pgtprgt4Pgt4og4Laa4La74Lax4LeK4LaxPC9oMj4KPGRpdiBjbGFzcz0iZ3JpZCI+CjxkaXY+PGxhYmVsPuC2tuC3kuC2veC3iuC2tOC2reC3iiDgt4Dgtrvgt4rgtpzgtro8L2xhYmVsPjxzZWxlY3QgaWQ9InR5cGUiIG9uY2hhbmdlPSJ1cGRhdGVJbnZvaWNlTm8oKTt1cGRhdGVSZW50YWxGaWVsZHMoKSI+PG9wdGlvbiB2YWx1ZT0iRk9PRCI+4LaG4LeE4LeP4La7IOC2h+C2q+C3gOC3lOC2uDwvb3B0aW9uPjxvcHRpb24gdmFsdWU9IkNBRkUiPk5lc2NhZmUgLyBOZXN0ZWEg4LaF4La94LeZ4LeA4LeS4La6PC9vcHRpb24+PG9wdGlvbiB2YWx1ZT0iUkVOVCI+4La34LeP4Lar4LeK4LapIOC2muC3lOC2veC3kuC2uuC2pyDgtq/gt5Pgtrg8L29wdGlvbj48L3NlbGVjdD48L2Rpdj4KPGRpdj48bGFiZWw+4La24LeS4La94LeK4La04Lat4LeKIOC2heC2guC2muC2uiAo4LeD4LeK4LeA4La64LaC4Laa4LeK4oCN4La74LeT4La6KTwvbGFiZWw+PGlucHV0IGlkPSJpbnZvaWNlTm8iIHJlYWRvbmx5PjwvZGl2Pgo8ZGl2PjxsYWJlbD7gtq/gt5LgtrHgtro8L2xhYmVsPjxpbnB1dCBpZD0iZGF0ZSIgdHlwZT0iZGF0ZSIgb25jaGFuZ2U9InVwZGF0ZUludm9pY2VObygpIj48L2Rpdj4KPGRpdj48bGFiZWw+4La04LeP4La74LeS4La34Led4Lac4LeS4LaaIOC2seC2uDwvbGFiZWw+PGlucHV0IGlkPSJjdXN0b21lciIgcGxhY2Vob2xkZXI9IuC2tOC3j+C2u+C3kuC2t+C3neC2nOC3kuC2miDgtrHgtrgiPjwvZGl2Pgo8ZGl2PjxsYWJlbD7grqTgr4rgrrLgr4jgrqrgr4fgrprgrr8gLyDgtq/gt5Tgtrvgtprgtq7gtrEg4LaF4LaC4Laa4La6PC9sYWJlbD48aW5wdXQgaWQ9InBob25lIiBpbnB1dG1vZGU9InRlbCIgcGxhY2Vob2xkZXI9IuC2r+C3lOC2u+C2muC2ruC2sSDgtoXgtoLgtprgtroiPjwvZGl2Pgo8ZGl2PjxsYWJlbD7gtovgtq3gt4rgt4Pgt4DgtrogLyDgt4Pgtqfgt4TgtrE8L2xhYmVsPjxpbnB1dCBpZD0iZXZlbnQiIHBsYWNlaG9sZGVyPSLgtovgtq3gt4rgt4Pgt4Dgtrog4LeE4LedIOC2heC2uOC2reC2uyDgt4Dgt5Lgt4Pgt4rgtq3gtrsiPjwvZGl2Pgo8L2Rpdj4KPGRpdiBpZD0icmVudGFsRmllbGRzIiBjbGFzcz0iZ3JpZCBoaWRkZW4iIHN0eWxlPSJtYXJnaW4tdG9wOjEycHgiPgo8ZGl2PjxsYWJlbD7gtprgt5Tgtr3gt5Lgtrrgtqcg4Lav4LeU4Lax4LeKIOC2r+C3kuC2seC2ujwvbGFiZWw+PGlucHV0IGlkPSJyZW50U3RhcnQiIHR5cGU9ImRhdGUiPjwvZGl2Pgo8ZGl2PjxsYWJlbD7gtobgtrTgt4Pgt5Qg4La94La24LeP4Lav4LeS4La6IOC2uuC3lOC2reC3lCDgtq/gt5LgtrHgtro8L2xhYmVsPjxpbnB1dCBpZD0icmVudEVuZCIgdHlwZT0iZGF0ZSI+PC9kaXY+CjxkaXY+PGxhYmVsPuC2muC3lOC2veC3kyDgtpzgtqvgtrHgtro8L2xhYmVsPjxzZWxlY3QgaWQ9InJlbnRNb2RlIj48b3B0aW9uIHZhbHVlPSJkYWlseSI+4Lav4LeS4LaxIOC2nOC2q+C2sSDDlyDgtpLgtprgtpog4Lav4Leb4Lax4LeS4LaaIOC2nOC3j+C3g+C3iuC2reC3lOC3gDwvb3B0aW9uPjxvcHRpb24gdmFsdWU9ImZsYXQiPuC2uOC3lOC3heC3lCDgtprgt4/gtr3gtrrgtqcg4LaS4Laa4Laa4La64LaaIOC3g+C3iuC2ruC3j+C3gOC2uyDgtpzgt4/gt4Pgt4rgtq3gt5Tgt4A8L29wdGlvbj48L3NlbGVjdD48L2Rpdj4KPC9kaXY+CjxoMz7gtrfgt4/gtqvgt4rgtqkgLyDgt4Pgt5rgt4Dgt488L2gzPgo8ZGl2IGNsYXNzPSJ0YWJsZXdyYXAiPjx0YWJsZSBjbGFzcz0iaXRlbXMiPjx0aGVhZD48dHI+PHRoPuC3gOC3kuC3g+C3iuC2reC2u+C2ujwvdGg+PHRoPuC2tOC3iuKAjeC2u+C2uOC3j+C2q+C2ujwvdGg+PHRoPuC2kuC2muC2miDgtrjgt5Lgtr0gKOC2u+C3lC4pPC90aD48dGg+4LaR4Laa4Lat4LeU4LeAICjgtrvgt5QuKTwvdGg+PHRoIGNsYXNzPSJuby1wcmludCI+PC90aD48L3RyPjwvdGhlYWQ+PHRib2R5IGlkPSJpdGVtc0JvZHkiPjwvdGJvZHk+PC90YWJsZT48L2Rpdj4KPGRpdiBjbGFzcz0icm93IG5vLXByaW50IiBzdHlsZT0ibWFyZ2luLXRvcDoxMHB4Ij48YnV0dG9uIGNsYXNzPSJzZWNvbmRhcnkiIG9uY2xpY2s9ImFkZEl0ZW0oKSI+KyDgtrfgt4/gtqvgt4rgtqngtrrgtprgt4og4LaR4Laa4LeKIOC2muC2u+C2seC3iuC2sTwvYnV0dG9uPjwvZGl2Pgo8ZGl2IGNsYXNzPSJncmlkMyIgc3R5bGU9Im1hcmdpbi10b3A6MTRweCI+CjxkaXY+PGxhYmVsPuC3gOC2p+C3iuC2p+C2uCAo4La74LeULik8L2xhYmVsPjxpbnB1dCBpZD0iZGlzY291bnQiIHR5cGU9Im51bWJlciIgbWluPSIwIiB2YWx1ZT0iMCIgb25pbnB1dD0iY2FsY3VsYXRlKCkiPjwvZGl2Pgo8ZGl2PjxsYWJlbD7gtrTgt4rigI3gtrvgt4Dgt4/gt4TgtrEgLyDgtoXgtrjgtq3gtrsg4Lac4LeP4LeD4LeK4Lat4LeUICjgtrvgt5QuKTwvbGFiZWw+PGlucHV0IGlkPSJleHRyYSIgdHlwZT0ibnVtYmVyIiBtaW49IjAiIHZhbHVlPSIwIiBvbmlucHV0PSJjYWxjdWxhdGUoKSI+PC9kaXY+CjxkaXY+PGxhYmVsPuC2reC3kOC2seC3iuC2tOC2reC3lCDgtrjgt5Tgtq/gtr0gKOC2u+C3lC4pIOKAlCDgtprgt5Tgtr3gt5Mg4La24LeS4La94LeK4La04Lat4LeKPC9sYWJlbD48aW5wdXQgaWQ9ImRlcG9zaXQiIHR5cGU9Im51bWJlciIgbWluPSIwIiB2YWx1ZT0iMCIgb25pbnB1dD0iY2FsY3VsYXRlKCkiPjwvZGl2Pgo8L2Rpdj4KPGRpdiBjbGFzcz0iZ3JpZCIgc3R5bGU9Im1hcmdpbi10b3A6MTJweCI+CjxkaXY+PGxhYmVsPuC2veC3kOC2tuC3lOC2q+C3lCDgtrjgt5Tgtq/gtr0gLyDgtoXgtq3gt4rgtq3gt5Lgtprgt4/gtrvgtrggKOC2u+C3lC4pPC9sYWJlbD48aW5wdXQgaWQ9InBhaWQiIHR5cGU9Im51bWJlciIgbWluPSIwIiB2YWx1ZT0iMCIgb25pbnB1dD0iY2FsY3VsYXRlKCkiPjwvZGl2Pgo8ZGl2PjxsYWJlbD7gtpzgt5ngt4Dgt5Pgtrjgt4og4Laa4LeK4oCN4La74La44La6PC9sYWJlbD48c2VsZWN0IGlkPSJwYXlNZXRob2QiPjxvcHRpb24+4La44LeU4Lav4La94LeKPC9vcHRpb24+PG9wdGlvbj7gtrbgt5DgtoLgtprgt5Qg4La44LeP4La74LeUPC9vcHRpb24+PG9wdGlvbj7gtprgt4/gtqngt4rgtrTgtq08L29wdGlvbj48b3B0aW9uPuC3gOC3meC2seC2reC3ijwvb3B0aW9uPjwvc2VsZWN0PjwvZGl2Pgo8L2Rpdj4KPGRpdiBjbGFzcz0ic3VtbWFyeSIgc3R5bGU9Im1hcmdpbi10b3A6MTRweCI+CjxkaXYgY2xhc3M9Im1ldHJpYyI+PHNtYWxsPuC2t+C3j+C2q+C3iuC2qSDgtpHgtprgtq3gt5Tgt4A8L3NtYWxsPjxzdHJvbmcgaWQ9InN1YnRvdGFsIj7gtrvgt5QuIDAuMDA8L3N0cm9uZz48L2Rpdj4KPGRpdiBjbGFzcz0ibWV0cmljIj48c21hbGw+4La44LeU4LeF4LeUIOC2tuC3kuC2veC3iuC2tOC2rTwvc21hbGw+PHN0cm9uZyBpZD0idG90YWwiPuC2u+C3lC4gMC4wMDwvc3Ryb25nPjwvZGl2Pgo8ZGl2IGNsYXNzPSJtZXRyaWMiPjxzbWFsbD7gtpzgt5ngt4Dgt5Pgtrjgtqcg4LaJ4Lat4LeS4La74LeSPC9zbWFsbD48c3Ryb25nIGlkPSJiYWxhbmNlIj7gtrvgt5QuIDAuMDA8L3N0cm9uZz48L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9InJvdyBuby1wcmludCIgc3R5bGU9Im1hcmdpbi10b3A6MTVweCI+PGJ1dHRvbiBvbmNsaWNrPSJzYXZlSW52b2ljZSgpIj7gtrbgt5Lgtr3gt4rgtrTgtq0g4LeD4LeU4La74Laa4LeS4Lax4LeK4LaxPC9idXR0b24+PGJ1dHRvbiBjbGFzcz0iZ29sZCIgb25jbGljaz0icHJpbnRJbnZvaWNlKCkiPuC2uOC3lOC2r+C3iuKAjeC2u+C2q+C2uiAvIFBERjwvYnV0dG9uPjxidXR0b24gY2xhc3M9InNlY29uZGFyeSIgb25jbGljaz0icmVzZXRGb3JtKCkiPuC2seC3gCDgtrbgt5Lgtr3gt4rgtrTgtq3gtprgtqcg4LeE4LeS4LeD4LeKIOC2muC2u+C2seC3iuC2sTwvYnV0dG9uPjwvZGl2Pgo8cCBjbGFzcz0ibXV0ZWQiPlBERiDgtr3gtrbgt4/gtpzgt5DgtrHgt5Pgtrjgtqcg4oCc4La44LeU4Lav4LeK4oCN4La74Lar4La6IC8gUERG4oCdIOC2reC3neC2u+C3jyBQcmludCBkaWFsb2cg4LaR4Laa4LeaIOKAnFNhdmUgYXMgUERG4oCdIOC2reC3neC2u+C2seC3iuC2sS48L3A+CjwvZGl2Pgo8L3NlY3Rpb24+CjxzZWN0aW9uIGlkPSJ0YWItcmVjb3JkcyIgY2xhc3M9ImhpZGRlbiI+CjxkaXYgY2xhc3M9InBhbmVsIj48aDI+4LeD4LeU4La74LeQ4Laa4LeSIOC2tuC3kuC2veC3iuC2tOC2reC3ijwvaDI+PGRpdiBjbGFzcz0icm93IG5vLXByaW50Ij48YnV0dG9uIGNsYXNzPSJzZWNvbmRhcnkiIG9uY2xpY2s9ImV4cG9ydENTVigpIj5DU1YgQmFja3VwIOC2veC2tuC3j+C2nOC2seC3iuC2sTwvYnV0dG9uPjxidXR0b24gY2xhc3M9InNlY29uZGFyeSIgb25jbGljaz0iZXhwb3J0SlNPTigpIj7gt4Pgtrjgt4rgtrTgt5bgtrvgt4rgtqsgQmFja3VwIChKU09OKTwvYnV0dG9uPjxidXR0b24gY2xhc3M9InNlY29uZGFyeSIgb25jbGljaz0iZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2ltcG9ydEZpbGUnKS5jbGljaygpIj5CYWNrdXAg4Lax4LeQ4LeA4LatIOC2veC2tuC3j+C2nOC2seC3iuC2sTwvYnV0dG9uPjxpbnB1dCBpZD0iaW1wb3J0RmlsZSIgY2xhc3M9ImhpZGRlbiIgdHlwZT0iZmlsZSIgYWNjZXB0PSIuanNvbiIgb25jaGFuZ2U9ImltcG9ydEpTT04oZXZlbnQpIj48L2Rpdj48ZGl2IGNsYXNzPSJ0YWJsZXdyYXAiIHN0eWxlPSJtYXJnaW4tdG9wOjEycHgiPjx0YWJsZT48dGhlYWQ+PHRyPjx0aD7gtrbgt5Lgtr3gt4rgtrTgtq3gt4og4LaF4LaC4Laa4La6PC90aD48dGg+4Lav4LeS4Lax4La6PC90aD48dGg+4LeA4La74LeK4Lac4La6PC90aD48dGg+4La04LeP4La74LeS4La34Led4Lac4LeS4Laa4La64LePPC90aD48dGg+4La44LeU4LeF4LeUIOC2uOC3lOC2r+C2vTwvdGg+PHRoPuC2ieC2reC3kuC2u+C3kuC2ujwvdGg+PHRoPuC2muC3iuKAjeC2u+C3kuC2uuC3jzwvdGg+PC90cj48L3RoZWFkPjx0Ym9keSBpZD0icmVjb3Jkc0JvZHkiPjwvdGJvZHk+PC90YWJsZT48L2Rpdj48cCBpZD0iZW1wdHlNc2ciIGNsYXNzPSJtdXRlZCI+4Lat4LeA4La4IOC2tuC3kuC2veC3iuC2tOC2reC3iiDgt4Pgt5Tgtrvgtprgt5LgtrHgt5Qg4La94LeQ4La2IOC2seC3kOC2rS48L3A+PC9kaXY+Cjwvc2VjdGlvbj4KPHNlY3Rpb24gaWQ9InRhYi1zZXR0aW5ncyIgY2xhc3M9ImhpZGRlbiI+CjxkaXYgY2xhc3M9InBhbmVsIj48aDI+4LeA4LeK4oCN4La64LeP4La04LeP4La7IOC2reC3nOC2u+C2reC3lOC2u+C3lDwvaDI+PGRpdiBjbGFzcz0iZ3JpZCI+PGRpdj48bGFiZWw+4LeA4LeK4oCN4La64LeP4La04LeP4La74La64LeaIOC2seC2uDwvbGFiZWw+PGlucHV0IGlkPSJiaXpOYW1lIiB2YWx1ZT0iTU4gQ0FURVJJTkcgU0VSVklDRSI+PC9kaXY+PGRpdj48bGFiZWw+4La94LeS4La04LeS4Lax4La6PC9sYWJlbD48aW5wdXQgaWQ9ImJpekFkZHJlc3MiIHZhbHVlPSI3OS81MCwgTUFIQVdBTEEgUk9BRCwgUkFUTkFQVVJBLCBTUkkgTEFOS0EiPjwvZGl2PjxkaXY+PGxhYmVsPuC2r+C3lOC2u+C2muC2ruC2sSDgtoXgtoLgtpogKOC2muC3nOC2uOC3j+C3gOC3meC2seC3iiDgt4Dgt5ngtrHgt4og4Laa4La74Lax4LeK4LaxKTwvbGFiZWw+PHRleHRhcmVhIGlkPSJiaXpQaG9uZXMiPjA3MTIyMTA2NzEsIDA3NzIyMTA2NzEsIDA3NzkwNjY3MjEsIDA3NzcwNDg0NzE8L3RleHRhcmVhPjwvZGl2PjxkaXY+PGxhYmVsPuC2tuC3kuC2veC3iuC2tOC2reC3iiDgtrTgt4/gtq/gtpog4LeD4Lan4LeE4LaxPC9sYWJlbD48aW5wdXQgaWQ9ImJpekZvb3RlciIgdmFsdWU9IuC2lOC2tuC2nOC3miDgt4Pgt5rgt4Dgtrrgtqcg4LeD4LeK4Lat4LeU4Lat4LeS4La64LeSISI+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0icm93IG5vLXByaW50IiBzdHlsZT0ibWFyZ2luLXRvcDoxMnB4Ij48YnV0dG9uIG9uY2xpY2s9InNhdmVTZXR0aW5ncygpIj7gtq3gt5zgtrvgtq3gt5Tgtrvgt5Qg4LeD4LeU4La74Laa4LeS4Lax4LeK4LaxPC9idXR0b24+PC9kaXY+PHAgY2xhc3M9Im11dGVkIj7gtrjgt5ngtrgg4Lat4Lec4La74Lat4LeU4La74LeU4LavIOC2r+C3kOC2seC2pyDgtrjgt5ngtrggYnJvd3NlciDgtpHgtprgt5og4La04La44Lar4Laa4LeKIOC3g+C3lOC2u+C3kOC2muC3mi48L3A+PC9kaXY+Cjwvc2VjdGlvbj4KPHNlY3Rpb24gaWQ9InByaW50QXJlYSIgY2xhc3M9ImhpZGRlbiI+PC9zZWN0aW9uPgo8Zm9vdGVyPk1OIENBVEVSSU5HIFNFUlZJQ0Ug4oCiIEJpbGxpbmcgcHJvdG90eXBlPC9mb290ZXI+CjwvZGl2Pgo8c2NyaXB0Pgpjb25zdCAkPWlkPT5kb2N1bWVudC5nZXRFbGVtZW50QnlJZChpZCk7CmNvbnN0IG1vbmV5PW49Pifgtrvgt5QuICcrKE51bWJlcihuKXx8MCkudG9Mb2NhbGVTdHJpbmcoJ2VuLUxLJyx7bWluaW11bUZyYWN0aW9uRGlnaXRzOjIsbWF4aW11bUZyYWN0aW9uRGlnaXRzOjJ9KTsKY29uc3QgdHlwZU5hbWVzPXtGT09EOifgtobgt4Tgt4/gtrsg4LaH4Lar4LeA4LeU4La4JyxDQUZFOidOZXNjYWZlIC8gTmVzdGVhJyxSRU5UOifgtrfgt4/gtqvgt4rgtqkg4Laa4LeU4La94LeS4La64LanIOC2r+C3k+C2uCd9OwpsZXQgaW52b2ljZXM9SlNPTi5wYXJzZShsb2NhbFN0b3JhZ2UuZ2V0SXRlbSgnbW5faW52b2ljZXMnKXx8J1tdJyk7CmxldCBzZXR0aW5ncz1KU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKCdtbl9zZXR0aW5ncycpfHwne30nKTsKZnVuY3Rpb24gdG9kYXkoKXtyZXR1cm4gbmV3IERhdGUoKS50b0xvY2FsZURhdGVTdHJpbmcoJ2VuLUNBJyl9CiQoJ2RhdGUnKS52YWx1ZT10b2RheSgpOyQoJ3JlbnRTdGFydCcpLnZhbHVlPXRvZGF5KCk7JCgncmVudEVuZCcpLnZhbHVlPXRvZGF5KCk7CmZ1bmN0aW9uIHNob3dUYWIodCl7WyduZXcnLCdyZWNvcmRzJywnc2V0dGluZ3MnXS5mb3JFYWNoKHg9PiQoJ3RhYi0nK3gpLmNsYXNzTGlzdC50b2dnbGUoJ2hpZGRlbicseCE9PXQpKTtpZih0PT09J3JlY29yZHMnKXJlbmRlclJlY29yZHMoKX0KZnVuY3Rpb24gdXBkYXRlSW52b2ljZU5vKCl7bGV0IGQ9KCQoJ2RhdGUnKS52YWx1ZXx8dG9kYXkoKSkucmVwbGFjZUFsbCgnLScsJycpO2xldCB0eXBlPSQoJ3R5cGUnKS52YWx1ZTtsZXQgY291bnQ9aW52b2ljZXMuZmlsdGVyKGk9PmkuZGF0ZT09PSgkKCdkYXRlJykudmFsdWV8fHRvZGF5KCkpJiZpLnR5cGU9PT10eXBlKS5sZW5ndGgrMTskKCdpbnZvaWNlTm8nKS52YWx1ZT1gTU4tJHtkfS0ke3R5cGV9LSR7U3RyaW5nKGNvdW50KS5wYWRTdGFydCgzLCcwJyl9YH0KZnVuY3Rpb24gdXBkYXRlUmVudGFsRmllbGRzKCl7JCgncmVudGFsRmllbGRzJykuY2xhc3NMaXN0LnRvZ2dsZSgnaGlkZGVuJywkKCd0eXBlJykudmFsdWUhPT0nUkVOVCcpO2NhbGN1bGF0ZSgpfQpmdW5jdGlvbiBhZGRJdGVtKGRlc2M9JycscXR5PTEscHJpY2U9MCl7bGV0IHRyPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ3RyJyk7dHIuaW5uZXJIVE1MPWA8dGQ+PGlucHV0IGNsYXNzPSJkZXNjIiBwbGFjZWhvbGRlcj0i4La34LeP4Lar4LeK4Lap4La6IC8g4LeD4Lea4LeA4LeP4LeAIiB2YWx1ZT0iJHtlc2NhcGVIdG1sKGRlc2MpfSI+PC90ZD48dGQ+PGlucHV0IGNsYXNzPSJxdHkiIHR5cGU9Im51bWJlciIgbWluPSIwIiBzdGVwPSIwLjAxIiB2YWx1ZT0iJHtxdHl9Ij48L3RkPjx0ZD48aW5wdXQgY2xhc3M9InByaWNlIiB0eXBlPSJudW1iZXIiIG1pbj0iMCIgc3RlcD0iMC4wMSIgdmFsdWU9IiR7cHJpY2V9Ij48L3RkPjx0ZCBjbGFzcz0ibGluZVRvdGFsIj7gtrvgt5QuIDAuMDA8L3RkPjx0ZCBjbGFzcz0ibm8tcHJpbnQiPjxidXR0b24gY2xhc3M9ImRhbmdlciIgb25jbGljaz0idGhpcy5jbG9zZXN0KCd0cicpLnJlbW92ZSgpO2NhbGN1bGF0ZSgpIj7DlzwvYnV0dG9uPjwvdGQ+YDt0ci5xdWVyeVNlbGVjdG9yQWxsKCdpbnB1dCcpLmZvckVhY2goaT0+aS5hZGRFdmVudExpc3RlbmVyKCdpbnB1dCcsY2FsY3VsYXRlKSk7JCgnaXRlbXNCb2R5JykuYXBwZW5kQ2hpbGQodHIpO2NhbGN1bGF0ZSgpfQpmdW5jdGlvbiBlc2NhcGVIdG1sKHMpe3JldHVybiBTdHJpbmcocykucmVwbGFjZSgvWyY8PiInXS9nLGM9Pih7JyYnOicmYW1wOycsJzwnOicmbHQ7JywnPic6JyZndDsnLCciJzonJnF1b3Q7JywiJyI6JyYjMzk7J31bY10pKX0KZnVuY3Rpb24gcmVudGFsRGF5cygpe2xldCBhPW5ldyBEYXRlKCgkKCdyZW50U3RhcnQnKS52YWx1ZXx8dG9kYXkoKSkrJ1QwMDowMDowMCcpLGI9bmV3IERhdGUoKCQoJ3JlbnRFbmQnKS52YWx1ZXx8JCgncmVudFN0YXJ0JykudmFsdWV8fHRvZGF5KCkpKydUMDA6MDA6MDAnKTtyZXR1cm4gTWF0aC5tYXgoMSxNYXRoLmZsb29yKChiLWEpLzg2NDAwMDAwKSsxKX0KZnVuY3Rpb24gY2FsY3VsYXRlKCl7bGV0IHN1YnRvdGFsPTA7Wy4uLiQoJ2l0ZW1zQm9keScpLnJvd3NdLmZvckVhY2gocj0+e2xldCBxPU51bWJlcihyLnF1ZXJ5U2VsZWN0b3IoJy5xdHknKS52YWx1ZSl8fDAscD1OdW1iZXIoci5xdWVyeVNlbGVjdG9yKCcucHJpY2UnKS52YWx1ZSl8fDA7bGV0IGxpbmU9cSpwO2lmKCQoJ3R5cGUnKS52YWx1ZT09PSdSRU5UJyYmJCgncmVudE1vZGUnKS52YWx1ZT09PSdkYWlseScpbGluZSo9cmVudGFsRGF5cygpO3IucXVlcnlTZWxlY3RvcignLmxpbmVUb3RhbCcpLnRleHRDb250ZW50PW1vbmV5KGxpbmUpO3N1YnRvdGFsKz1saW5lfSk7bGV0IHRvdGFsPU1hdGgubWF4KDAsc3VidG90YWwtKE51bWJlcigkKCdkaXNjb3VudCcpLnZhbHVlKXx8MCkrKE51bWJlcigkKCdleHRyYScpLnZhbHVlKXx8MCkpO2xldCBwYWlkPU51bWJlcigkKCdwYWlkJykudmFsdWUpfHwwO2xldCBiYWxhbmNlPU1hdGgubWF4KDAsdG90YWwtcGFpZCk7JCgnc3VidG90YWwnKS50ZXh0Q29udGVudD1tb25leShzdWJ0b3RhbCk7JCgndG90YWwnKS50ZXh0Q29udGVudD1tb25leSh0b3RhbCk7JCgnYmFsYW5jZScpLnRleHRDb250ZW50PW1vbmV5KGJhbGFuY2UpO3JldHVybntzdWJ0b3RhbCx0b3RhbCxwYWlkLGJhbGFuY2V9fQpmdW5jdGlvbiBmb3JtRGF0YSgpe2xldCBjPWNhbGN1bGF0ZSgpO3JldHVybnt0eXBlOiQoJ3R5cGUnKS52YWx1ZSxpbnZvaWNlTm86JCgnaW52b2ljZU5vJykudmFsdWUsZGF0ZTokKCdkYXRlJykudmFsdWUsY3VzdG9tZXI6JCgnY3VzdG9tZXInKS52YWx1ZS50cmltKCkscGhvbmU6JCgncGhvbmUnKS52YWx1ZS50cmltKCksZXZlbnQ6JCgnZXZlbnQnKS52YWx1ZS50cmltKCkscmVudFN0YXJ0OiQoJ3JlbnRTdGFydCcpLnZhbHVlLHJlbnRFbmQ6JCgncmVudEVuZCcpLnZhbHVlLHJlbnRNb2RlOiQoJ3JlbnRNb2RlJykudmFsdWUscmVudERheXM6cmVudGFsRGF5cygpLGl0ZW1zOlsuLi4kKCdpdGVtc0JvZHknKS5yb3dzXS5tYXAocj0+KHtkZXNjcmlwdGlvbjpyLnF1ZXJ5U2VsZWN0b3IoJy5kZXNjJykudmFsdWUscXR5Ok51bWJlcihyLnF1ZXJ5U2VsZWN0b3IoJy5xdHknKS52YWx1ZSl8fDAscHJpY2U6TnVtYmVyKHIucXVlcnlTZWxlY3RvcignLnByaWNlJykudmFsdWUpfHwwLGxpbmVUb3RhbDpOdW1iZXIoci5xdWVyeVNlbGVjdG9yKCcubGluZVRvdGFsJykudGV4dENvbnRlbnQucmVwbGFjZSgvW15cZC4tXS9nLCcnKSl8fDB9KSksZGlzY291bnQ6TnVtYmVyKCQoJ2Rpc2NvdW50JykudmFsdWUpfHwwLGV4dHJhOk51bWJlcigkKCdleHRyYScpLnZhbHVlKXx8MCxkZXBvc2l0Ok51bWJlcigkKCdkZXBvc2l0JykudmFsdWUpfHwwLHBhaWQ6Yy5wYWlkLHBheU1ldGhvZDokKCdwYXlNZXRob2QnKS52YWx1ZSxzdWJ0b3RhbDpjLnN1YnRvdGFsLHRvdGFsOmMudG90YWwsYmFsYW5jZTpjLmJhbGFuY2UsY3JlYXRlZEF0Om5ldyBEYXRlKCkudG9JU09TdHJpbmcoKX19CmZ1bmN0aW9uIHNhdmVJbnZvaWNlKCl7bGV0IGQ9Zm9ybURhdGEoKTtpZighZC5jdXN0b21lcil7YWxlcnQoJ+C2muC2u+C3lOC2q+C3j+C2muC2uyDgtrTgt4/gtrvgt5Lgtrfgt53gtpzgt5Lgtpog4Lax4La4IOC2h+C2reC3lOC3heC2reC3iiDgtprgtrvgtrHgt4rgtrEuJyk7cmV0dXJufWlmKCFkLml0ZW1zLmxlbmd0aHx8IWQuaXRlbXMuc29tZShpPT5pLmRlc2NyaXB0aW9uLnRyaW0oKSkpe2FsZXJ0KCfgtoXgt4Dgtrgg4LeA4LeB4La64LeZ4Lax4LeKIOC2keC2muC3iiDgtrfgt4/gtqvgt4rgtqngtrrgtprgt4og4LeE4LedIOC3g+C3muC3gOC3j+C3gOC2muC3iiDgtofgtq3gt5Tgt4Xgtq3gt4og4Laa4La74Lax4LeK4LaxLicpO3JldHVybn1pZihkLnBhaWQ+ZC50b3RhbCl7aWYoIWNvbmZpcm0oJ+C2veC3kOC2tuC3lOC2q+C3lCDgtrjgt5Tgtq/gtr0g4La44LeU4LeF4LeUIOC2tuC3kuC2veC3iuC2tOC2reC2pyDgt4Dgtqngt48g4LeA4LeQ4Lap4LeS4La64LeSLiDgtpHgt4Pgt5rgtrgg4LeD4LeU4La74Laa4LeS4Lax4LeK4Lax4LavPycpKXJldHVybjtkLmJhbGFuY2U9MH1pZihpbnZvaWNlcy5zb21lKGk9PmkuaW52b2ljZU5vPT09ZC5pbnZvaWNlTm8pKXt1cGRhdGVJbnZvaWNlTm8oKTtkLmludm9pY2VObz0kKCdpbnZvaWNlTm8nKS52YWx1ZX1pbnZvaWNlcy5wdXNoKGQpO2xvY2FsU3RvcmFnZS5zZXRJdGVtKCdtbl9pbnZvaWNlcycsSlNPTi5zdHJpbmdpZnkoaW52b2ljZXMpKTthbGVydCgn4La24LeS4La94LeK4La04LatIOC3g+C3lOC2u+C2muC3kuC2sSDgtr3gtq/gt5M6ICcrZC5pbnZvaWNlTm8pO3JlbmRlclJlY29yZHMoKTtwcmludEludm9pY2UoZCk7cmVzZXRGb3JtKCl9CmZ1bmN0aW9uIHJlc2V0Rm9ybSgpeyQoJ2N1c3RvbWVyJykudmFsdWU9Jyc7JCgncGhvbmUnKS52YWx1ZT0nJzskKCdldmVudCcpLnZhbHVlPScnOyQoJ2Rpc2NvdW50JykudmFsdWU9MDskKCdleHRyYScpLnZhbHVlPTA7JCgnZGVwb3NpdCcpLnZhbHVlPTA7JCgncGFpZCcpLnZhbHVlPTA7JCgnaXRlbXNCb2R5JykuaW5uZXJIVE1MPScnO2FkZEl0ZW0oKTt1cGRhdGVJbnZvaWNlTm8oKX0KZnVuY3Rpb24gZ2V0U2V0dGluZ3MoKXtyZXR1cm57Yml6TmFtZTokKCdiaXpOYW1lJykudmFsdWUudHJpbSgpfHwnTU4gQ0FURVJJTkcgU0VSVklDRScsYml6QWRkcmVzczokKCdiaXpBZGRyZXNzJykudmFsdWUudHJpbSgpLGJpelBob25lczokKCdiaXpQaG9uZXMnKS52YWx1ZS50cmltKCksYml6Rm9vdGVyOiQoJ2JpekZvb3RlcicpLnZhbHVlLnRyaW0oKX19CmZ1bmN0aW9uIHNhdmVTZXR0aW5ncygpe3NldHRpbmdzPWdldFNldHRpbmdzKCk7bG9jYWxTdG9yYWdlLnNldEl0ZW0oJ21uX3NldHRpbmdzJyxKU09OLnN0cmluZ2lmeShzZXR0aW5ncykpO2FsZXJ0KCfgt4Dgt4rigI3gtrrgt4/gtrTgt4/gtrsg4Lat4Lec4La74Lat4LeU4La74LeUIOC3g+C3lOC2u+C2muC3kuC2sSDgtr3gtq/gt5MuJyl9CmZ1bmN0aW9uIGxvYWRTZXR0aW5ncygpe2lmKHNldHRpbmdzLmJpek5hbWUpJCgnYml6TmFtZScpLnZhbHVlPXNldHRpbmdzLmJpek5hbWU7aWYoc2V0dGluZ3MuYml6QWRkcmVzcyE9PXVuZGVmaW5lZCkkKCdiaXpBZGRyZXNzJykudmFsdWU9c2V0dGluZ3MuYml6QWRkcmVzcztpZihzZXR0aW5ncy5iaXpQaG9uZXMpJCgnYml6UGhvbmVzJykudmFsdWU9c2V0dGluZ3MuYml6UGhvbmVzO2lmKHNldHRpbmdzLmJpekZvb3RlcikkKCdiaXpGb290ZXInKS52YWx1ZT1zZXR0aW5ncy5iaXpGb290ZXJ9CmZ1bmN0aW9uIHJlbmRlclJlY29yZHMoKXskKCdyZWNvcmRzQm9keScpLmlubmVySFRNTD0nJzskKCdlbXB0eU1zZycpLmNsYXNzTGlzdC50b2dnbGUoJ2hpZGRlbicsaW52b2ljZXMubGVuZ3RoPjApO1suLi5pbnZvaWNlc10ucmV2ZXJzZSgpLmZvckVhY2goaT0+e2xldCB0cj1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCd0cicpO3RyLmlubmVySFRNTD1gPHRkPiR7ZXNjYXBlSHRtbChpLmludm9pY2VObyl9PC90ZD48dGQ+JHtlc2NhcGVIdG1sKGkuZGF0ZSl9PC90ZD48dGQ+JHt0eXBlTmFtZXNbaS50eXBlXX08L3RkPjx0ZD4ke2VzY2FwZUh0bWwoaS5jdXN0b21lcil9PC90ZD48dGQ+JHttb25leShpLnRvdGFsKX08L3RkPjx0ZD4ke21vbmV5KGkuYmFsYW5jZSl9PC90ZD48dGQ+PGJ1dHRvbiBjbGFzcz0ic2Vjb25kYXJ5IiBvbmNsaWNrPSJyZXByaW50KCcke2VzY2FwZUh0bWwoaS5pbnZvaWNlTm8pfScpIj5QREYv4La44LeU4Lav4LeK4oCN4La74Lar4La6PC9idXR0b24+PC90ZD5gOyQoJ3JlY29yZHNCb2R5JykuYXBwZW5kQ2hpbGQodHIpfSl9CmZ1bmN0aW9uIHJlY2VpcHRIVE1MKGkpe2xldCBzPXNldHRpbmdzLmJpek5hbWU/c2V0dGluZ3M6Z2V0U2V0dGluZ3MoKTtyZXR1cm4gYDxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OkFyaWFsLHNhbnMtc2VyaWY7Y29sb3I6IzIyMjttYXgtd2lkdGg6ODAwcHg7bWFyZ2luOmF1dG87cGFkZGluZzoyMHB4Ij48aDEgc3R5bGU9ImNvbG9yOiMxNzNkMzI7bWFyZ2luLWJvdHRvbTo0cHgiPiR7ZXNjYXBlSHRtbChzLmJpek5hbWV8fCdNTiBDQVRFUklORyBTRVJWSUNFJyl9PC9oMT48ZGl2PiR7ZXNjYXBlSHRtbChzLmJpekFkZHJlc3N8fCcnKX08L2Rpdj48ZGl2PiR7ZXNjYXBlSHRtbChzLmJpelBob25lc3x8JycpfTwvZGl2Pjxocj48aDI+4La24LeS4La94LeK4La04LatIC8gSU5WT0lDRTwvaDI+PHA+PGI+4La24LeS4La94LeK4La04Lat4LeKIOC2heC2guC2muC2ujo8L2I+ICR7ZXNjYXBlSHRtbChpLmludm9pY2VObyl9PGJyPjxiPuC2r+C3kuC2seC2ujo8L2I+ICR7ZXNjYXBlSHRtbChpLmRhdGUpfTxicj48Yj7gt4Dgtrvgt4rgtpzgtro6PC9iPiAke3R5cGVOYW1lc1tpLnR5cGVdfTwvcD48cD48Yj7gtrTgt4/gtrvgt5Lgtrfgt53gtpzgt5Lgtprgtrrgt486PC9iPiAke2VzY2FwZUh0bWwoaS5jdXN0b21lcil9PGJyPjxiPuC2r+C3lOC2u+C2muC2ruC2seC2ujo8L2I+ICR7ZXNjYXBlSHRtbChpLnBob25lfHwnLScpfTxicj48Yj7gt4Pgtqfgt4TgtrE6PC9iPiAke2VzY2FwZUh0bWwoaS5ldmVudHx8Jy0nKX08L3A+JHtpLnR5cGU9PT0nUkVOVCc/YDxwPjxiPuC2muC3lOC2veC3kyDgtq/gt5LgtrHgtro6PC9iPiAke2VzY2FwZUh0bWwoaS5yZW50U3RhcnR8fCctJyl9IOKAkyAke2VzY2FwZUh0bWwoaS5yZW50RW5kfHwnLScpfSAoJHtpLnJlbnREYXlzfSDgtq/gt5LgtrEpPC9wPmA6Jyd9PHRhYmxlIHN0eWxlPSJ3aWR0aDoxMDAlO2JvcmRlci1jb2xsYXBzZTpjb2xsYXBzZSI+PHRoZWFkPjx0cj48dGggc3R5bGU9InRleHQtYWxpZ246bGVmdDtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjYWFhO3BhZGRpbmc6OHB4Ij7gt4Dgt5Lgt4Pgt4rgtq3gtrvgtro8L3RoPjx0aCBzdHlsZT0idGV4dC1hbGlnbjpyaWdodDtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjYWFhO3BhZGRpbmc6OHB4Ij7gtrTgt4rigI3gtrvgtrjgt4/gtqvgtro8L3RoPjx0aCBzdHlsZT0idGV4dC1hbGlnbjpyaWdodDtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjYWFhO3BhZGRpbmc6OHB4Ij7gtpLgtprgtpog4La44LeS4La9PC90aD48dGggc3R5bGU9InRleHQtYWxpZ246cmlnaHQ7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgI2FhYTtwYWRkaW5nOjhweCI+4LaR4Laa4Lat4LeU4LeAPC90aD48L3RyPjwvdGhlYWQ+PHRib2R5PiR7aS5pdGVtcy5tYXAoeD0+YDx0cj48dGQgc3R5bGU9InBhZGRpbmc6OHB4O2JvcmRlci1ib3R0b206MXB4IHNvbGlkICNkZGQiPiR7ZXNjYXBlSHRtbCh4LmRlc2NyaXB0aW9uKX08L3RkPjx0ZCBzdHlsZT0idGV4dC1hbGlnbjpyaWdodDtwYWRkaW5nOjhweDtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjZGRkIj4ke3gucXR5fTwvdGQ+PHRkIHN0eWxlPSJ0ZXh0LWFsaWduOnJpZ2h0O3BhZGRpbmc6OHB4O2JvcmRlci1ib3R0b206MXB4IHNvbGlkICNkZGQiPiR7bW9uZXkoeC5wcmljZSl9PC90ZD48dGQgc3R5bGU9InRleHQtYWxpZ246cmlnaHQ7cGFkZGluZzo4cHg7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgI2RkZCI+JHttb25leSh4LmxpbmVUb3RhbCl9PC90ZD48L3RyPmApLmpvaW4oJycpfTwvdGJvZHk+PC90YWJsZT48ZGl2IHN0eWxlPSJtYXJnaW4tdG9wOjE1cHg7dGV4dC1hbGlnbjpyaWdodDtsaW5lLWhlaWdodDoxLjkiPuC2t+C3j+C2q+C3iuC2qSDgtpHgtprgtq3gt5Tgt4A6ICR7bW9uZXkoaS5zdWJ0b3RhbCl9PGJyPuC3gOC2p+C3iuC2p+C2uDogJHttb25leShpLmRpc2NvdW50KX08YnI+4LaF4La44Lat4La7IOC2nOC3j+C3g+C3iuC2reC3lDogJHttb25leShpLmV4dHJhKX08YnI+JHtpLnR5cGU9PT0nUkVOVCc/J+C2reC3kOC2seC3iuC2tOC2reC3lOC3gCAo4Lat4Lec4La74Lat4LeU4La74LeUIOC3g+C2s+C3hOC3jyk6ICcrbW9uZXkoaS5kZXBvc2l0KSsnPGJyPic6Jyd9PGI+4La44LeU4LeF4LeUIOC2uOC3lOC2r+C2vTogJHttb25leShpLnRvdGFsKX08L2I+PGJyPuC2veC3kOC2tuC3lOC2q+C3lCDgtrjgt5Tgtq/gtr06ICR7bW9uZXkoaS5wYWlkKX08YnI+PGI+4Lac4LeZ4LeA4LeT4La44LanIOC2ieC2reC3kuC2u+C3kjogJHttb25leShpLmJhbGFuY2UpfTwvYj48YnI+4Lac4LeZ4LeA4LeT4La44LeKIOC2muC3iuKAjeC2u+C2uOC2ujogJHtlc2NhcGVIdG1sKGkucGF5TWV0aG9kKX08L2Rpdj48aHI+PHA+JHtlc2NhcGVIdG1sKHMuYml6Rm9vdGVyfHwn4LaU4La24Lac4LeaIOC3g+C3muC3gOC2uuC2pyDgt4Pgt4rgtq3gt5Tgtq3gt5Lgtrrgt5IhJyl9PC9wPjwvZGl2PmB9CmZ1bmN0aW9uIHByaW50SW52b2ljZShkYXRhKXtsZXQgaT1kYXRhfHxmb3JtRGF0YSgpO2xldCB3PXdpbmRvdy5vcGVuKCcnLCdfYmxhbmsnKTtpZighdyl7YWxlcnQoJ+C2uOC3lOC2r+C3iuKAjeC2u+C2q+C2uiDgt4PgtrPgt4Tgt48gYnJvd3NlciBwb3B1cCDgtoXgt4Dgt4Pgtrsg4Lav4LeZ4Lax4LeK4LaxLicpO3JldHVybn13LmRvY3VtZW50LndyaXRlKCc8aHRtbD48aGVhZD48bWV0YSBjaGFyc2V0PSJ1dGYtOCI+PHRpdGxlPicrZXNjYXBlSHRtbChpLmludm9pY2VObykrJzwvdGl0bGU+PHN0eWxlPmJvZHl7Zm9udC1mYW1pbHk6QXJpYWwsc2Fucy1zZXJpZn1AbWVkaWEgcHJpbnR7YnV0dG9ue2Rpc3BsYXk6bm9uZX19PC9zdHlsZT48L2hlYWQ+PGJvZHk+JytyZWNlaXB0SFRNTChpKSsnPHNjcmlwdD53aW5kb3cub25sb2FkPSgpPT53aW5kb3cucHJpbnQoKTxcL3NjcmlwdD48L2JvZHk+PC9odG1sPicpO3cuZG9jdW1lbnQuY2xvc2UoKX0KZnVuY3Rpb24gcmVwcmludChubyl7bGV0IGk9aW52b2ljZXMuZmluZCh4PT54Lmludm9pY2VObz09PW5vKTtpZihpKXByaW50SW52b2ljZShpKX0KZnVuY3Rpb24gZXhwb3J0Q1NWKCl7bGV0IHJvd3M9W1snSW52b2ljZScsJ0RhdGUnLCdUeXBlJywnQ3VzdG9tZXInLCdQaG9uZScsJ1N1YnRvdGFsJywnRGlzY291bnQnLCdFeHRyYScsJ1RvdGFsJywnUGFpZCcsJ0JhbGFuY2UnLCdQYXltZW50IE1ldGhvZCddLC4uLmludm9pY2VzLm1hcChpPT5baS5pbnZvaWNlTm8saS5kYXRlLGkudHlwZSxpLmN1c3RvbWVyLGkucGhvbmUsaS5zdWJ0b3RhbCxpLmRpc2NvdW50LGkuZXh0cmEsaS50b3RhbCxpLnBhaWQsaS5iYWxhbmNlLGkucGF5TWV0aG9kXSldO2xldCBjc3Y9cm93cy5tYXAocj0+ci5tYXAodj0+JyInK1N0cmluZyh2Pz8nJykucmVwbGFjZUFsbCgnIicsJyIiJykrJyInKS5qb2luKCcsJykpLmpvaW4oJ1xyXG4nKTtkb3dubG9hZCgnXHVmZWZmJytjc3YsJ21uLWNhdGVyaW5nLWludm9pY2VzLmNzdicsJ3RleHQvY3N2O2NoYXJzZXQ9dXRmLTg7Jyl9CmZ1bmN0aW9uIGV4cG9ydEpTT04oKXtkb3dubG9hZChKU09OLnN0cmluZ2lmeSh7aW52b2ljZXMsc2V0dGluZ3N9LG51bGwsMiksJ21uLWNhdGVyaW5nLWJhY2t1cC5qc29uJywnYXBwbGljYXRpb24vanNvbicpfQpmdW5jdGlvbiBkb3dubG9hZChjb250ZW50LG5hbWUsdHlwZSl7bGV0IGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnYScpO2EuaHJlZj1VUkwuY3JlYXRlT2JqZWN0VVJMKG5ldyBCbG9iKFtjb250ZW50XSx7dHlwZX0pKTthLmRvd25sb2FkPW5hbWU7YS5jbGljaygpO1VSTC5yZXZva2VPYmplY3RVUkwoYS5ocmVmKX0KZnVuY3Rpb24gaW1wb3J0SlNPTihlKXtsZXQgZj1lLnRhcmdldC5maWxlc1swXTtpZighZilyZXR1cm47bGV0IHI9bmV3IEZpbGVSZWFkZXIoKTtyLm9ubG9hZD0oKT0+e3RyeXtsZXQgZD1KU09OLnBhcnNlKHIucmVzdWx0KTtpZighQXJyYXkuaXNBcnJheShkLmludm9pY2VzKSl0aHJvdyBFcnJvcigpO2lmKCFjb25maXJtKCfgtq/gt5DgtrHgtqcg4LaH4Lat4LeSIOC2r+C2reC3iuC2rSDgt4Dgt5ngtrHgt5Tgt4DgtqcgYmFja3VwIOC2r+C2reC3iuC2rSDgtrrgt5zgtq/gtrHgt4rgtrHgtq8/JykpcmV0dXJuO2ludm9pY2VzPWQuaW52b2ljZXM7c2V0dGluZ3M9ZC5zZXR0aW5nc3x8e307bG9jYWxTdG9yYWdlLnNldEl0ZW0oJ21uX2ludm9pY2VzJyxKU09OLnN0cmluZ2lmeShpbnZvaWNlcykpO2xvY2FsU3RvcmFnZS5zZXRJdGVtKCdtbl9zZXR0aW5ncycsSlNPTi5zdHJpbmdpZnkoc2V0dGluZ3MpKTtsb2FkU2V0dGluZ3MoKTtyZW5kZXJSZWNvcmRzKCk7YWxlcnQoJ0JhY2t1cCDgtrHgt5Dgt4Dgtq0g4La94La24LeP4Lac4Lax4LeK4Lax4LePIOC2veC2r+C3ky4nKX1jYXRjaChlcnIpe2FsZXJ0KCfgtrjgt5ngtrggYmFja3VwIOC2nOC3nOC2seC3lOC3gCDgtprgt5Lgtrrgt4Dgt5Lgtrog4Lax4Lec4LeE4LeQ4LaaLicpfX07ci5yZWFkQXNUZXh0KGYpfQpsb2FkU2V0dGluZ3MoKTthZGRJdGVtKCk7dXBkYXRlSW52b2ljZU5vKCk7dXBkYXRlUmVudGFsRmllbGRzKCk7Cjwvc2NyaXB0Pgo8L2JvZHk+PC9odG1sPg==')));
 function openBilling(){
- document.getElementById("welcome").style.display="none";
- document.getElementById("mainPage").style.display="none";
- document.getElementById("billingPage").style.display="block";
- const frame=document.getElementById("billingFrame");
- if(!frame.dataset.loaded){frame.srcdoc=billingHTML;frame.dataset.loaded="1";}
- window.scrollTo({top:0,behavior:"smooth"});
+ const page=document.getElementById('billPage');page.style.display='block';
+ const frame=document.getElementById('billFrame');
+ if(!frame.dataset.loaded){frame.srcdoc=billingHTML;frame.dataset.loaded='yes';}
 }
-function closeBilling(){
- document.getElementById("billingPage").style.display="none";
- document.getElementById("mainPage").style.display="flex";
- window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function continueSite() {
-    document.getElementById("welcome").style.display = "none";
-
-    document.getElementById("mainPage").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function backToWelcome() {
-    document.getElementById("mainPage").style.display = "none";
-
-    document.getElementById("welcome").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+function closeBilling(){document.getElementById('billPage').style.display='none';}
 </script>
-
 </body>
 </html>
